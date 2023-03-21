@@ -31,9 +31,15 @@ const routes = [
   }, {
     path: '/listar-tratamientos',
     name: 'Listar-tratamientos',
-    component: () => import(/* webpackChunk: "listar trtameintos" */'@/modules/tratamiento/pages/Listar-tratamientos'),
+    component: () => import(/* webpackChunk: "listar trtameintos" */'@/modules/tratamiento/pages/Listar-tratamientos.vue'),
 
   },
+  {
+    path: '/editar-tratamientos/:id',
+    name: 'Editar-tratamientos',
+    component: () => import(/* webpackChunk: "editar trtameintos" */'@/modules/tratamiento/pages/Editar-tratamientos.vue'),
+
+  }
 ]
 
 const router = createRouter({
