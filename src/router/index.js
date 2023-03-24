@@ -39,6 +39,12 @@ const routes = [
     name: 'Editar-tratamientos',
     component: () => import(/* webpackChunk: "editar trtameintos" */'@/modules/tratamiento/pages/Editar-tratamientos.vue'),
 
+  },
+  {
+    path:'/nuevo-tratamiento',
+    name: 'Nuevo-Tratameinto',
+    component: () => import(/* webpackChunk: "nuevo trtameintos" */'@/modules/tratamiento/pages/Nuevo-tratamiento.vue'),
+
   }
 ]
 

@@ -2,8 +2,16 @@
   <header>
     <div class="wrapper">
       <h1>TRATAMIENTOS</h1>
-       <RouterLink to="/home-page"> <button type="button" class="btn btn-secondary">volver</button></RouterLink>
 
+      <RouterLink to="/nuevo-tratamiento">
+        <button type="button" class="btn btn-info">Nuevo tratamiento</button>
+      </RouterLink>
+
+      <RouterLink to="/home-page">
+        <button type="button" class="btn btn-secondary">
+          volver
+        </button>
+        </RouterLink>
 
       <nav>
         <table class="table">
@@ -26,8 +34,13 @@
               <td>{{ tratamiento.precio }}</td>
               <td>{{ tratamiento.duracion }}</td>
               <td>
-                
-                <button type="button" class="btn btn-warning" v-on:click="esEditar(tratamiento.codigo)">Editar</button>
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                  v-on:click="esEditar(tratamiento.codigo)"
+                >
+                  Editar
+                </button>
               </td>
               <td>
                 <button type="button" class="btn btn-danger">Eliminar</button>
@@ -125,7 +138,7 @@ export default {
         .catch(console.log);
     },
     esEditar(id) {
-      this.$router.push(`/Editar-tratamientos/${id}`);
+      this.$router.push(`/editar-tratamientos/${id}`);
     },
     /* consultarUsuarios() {
             fetch('http://localhost:8000/api/user').then(respuesta => respuesta.json()).then((datosRespuesta) => {

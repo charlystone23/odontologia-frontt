@@ -12,7 +12,6 @@ data(){
     return{
         tratamientos:[],
         trt:{
-            "nombre":"",
             "descripcion":"",
             "precio":"",
             "duracion":""
@@ -25,16 +24,12 @@ created:function(){
 },
 methods:{
     consultarTratamientos(){
-        fetch('http://localhost:4000/api/tratamientos/editar-tratamientos/' + this.$route.params.id ).then(respuesta => respuesta.json())
-                .then((datosTratamiento) => {
-                    console.log(datosTratamiento)
-                    this.trt = datosTratamiento
-                    console.log(this.trt)
-
-                }).catch(console.log)
+        fetch('http://localhost:4000/api/tratamientos/' + this.$route.params.id,{method:'GET'})
+        .then(res => console.log(res))
+        
 
     },
-
+        
 }
 
 
