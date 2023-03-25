@@ -44,14 +44,26 @@
                 </button>
               </td>
               <td>
-                <button type="button" class="btn btn-danger">Eliminar</button>
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  v-on:click="borraRegistro(tratamiento.codigo)"
+                >
+                  Eliminar
+                </button>
               </td>
             </tr>
           </tbody>
         </table>
       </nav>
+
+
+      
     </div>
   </header>
+
+
+  
 </template>
 
 <script>
@@ -79,6 +91,20 @@ export default {
     },
     esEditar(id) {
       this.$router.push(`/editar-tratamientos/${id}`);
+    },
+
+    borraRegistro(id) {
+      fetch("http://localhost:4000/api/tratamientos/" + id, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((dataRes) => {
+          console.log(dataRes);
+        })
+        .catch(console.log)
+
+      alert("tratamiento eliminado")
+      location.reload()
     },
   },
 };

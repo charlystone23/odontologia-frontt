@@ -1,32 +1,40 @@
 <template>
-  <h1>Editar Tratamientos</h1>
-
+  <h1>Nuevo Paciente</h1>
   <div class="formulario" style="margin-left: 500px">
-    <form class="col-5" v-on:submit.prevent="actualizarRegistro">
+    <form class="col-5" v-on:submit.prevent="agregarRegistro">
       <div class="mb-3">
-        <h4>Codigo: {{ this.$route.params.id }}</h4>
+        <input
+          type="number"
+          class="form-control"
+          v-model="paciente.dni"
+          id="dni"
+          name="dni"
+          placeholder="Dni"
+          required
+        />
+        <small id="helpId" class="form-text text-muted"
+          >Dni del paciente</small
+        >
       </div>
-
       <div class="mb-3">
         <input
           type="text"
           class="form-control"
-          v-model="tratamiento.nombre"
+          v-model="paciente.nombre"
           id="nombre"
           name="nombre"
           placeholder="Nombre"
           required
         />
         <small id="helpId" class="form-text text-muted"
-          >Nombre del tratamiento</small
+          >Nombre del paciente</small
         >
       </div>
-
       <div class="mb-3">
         <input
           type="text"
           class="form-control"
-          v-model="tratamiento.descripcion"
+          v-model="paciente.descripcion"
           id="descripcion"
           name="descripcion"
           placeholder="Descripcion"
@@ -41,7 +49,7 @@
         <input
           type="number"
           class="form-control"
-          v-model="tratamiento.precio"
+          v-model="paciente.precio"
           id="precio"
           name="precio"
           placeholder="Precio"
@@ -55,7 +63,7 @@
         <input
           type="text"
           class="form-control"
-          v-model="tratamiento.duracion"
+          v-model="paciente.duracion"
           id="duracion"
           name="duracion"
           placeholder="Duracion"
@@ -67,80 +75,60 @@
       </div>
 
       <div>
-        <button type="submit" class="btn btn-warning">Actualizar</button>
-        <RouterLink to="/listar-tratamientos">
+        <button type="submit" class="btn btn-primary">Agregar</button>
+        <RouterLink to="/listar-pacientes">
           <button type="button" class="btn btn-secondary">
             cancelar
           </button></RouterLink
         >
       </div>
     </form>
-
-
-
-
-
   </div>
 </template>
 
+
 <script>
+import {} from "@/modules/tratamiento/pages/Listar-tratamientos.vue";
 export default {
+  name: "Nuevo-tratamiento",
+
   data() {
     return {
-      tratamiento: [],
+      paciente: {},
     };
   },
-
-  created: function () {
-    this.obtenerInfo();
-  },
   methods: {
-    obtenerInfo() {
-      console.log(this.$route.params);
-
-      fetch("http://localhost:4000/api/tratamientos/" + this.$route.params.id, {
-        method: "GET",
-      })
-        .then((res) => res.json())
-        .then((dataRes) => {
-          console.log(dataRes);
-          this.tratamiento = dataRes;
-        })
-        .catch(console.log);
-    },
-
-    async actualizarRegistro() {
+    async agregarRegistro() {
       console.log(this.tratamiento);
+
       var datosEnviar = {
-        codigo: this.$route.params.codigo,
+        codigo: this.tratamiento.codigo,
         nombre: this.tratamiento.nombre,
         descripcion: this.tratamiento.descripcion,
         precio: this.tratamiento.precio,
         duracion: this.tratamiento.duracion,
       };
+
       console.log(datosEnviar);
-      let datos = JSON.stringify(datosEnviar);
-      console.log(datos);
-      console.log(this.$route.params.id);
-      await fetch(
-        "http://localhost:4000/api/tratamientos/" + this.$route.params.id,
-        {
-          method: "PUT",
-          body: datos,
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
+
+      await fetch("http://localhost:4000/api/tratamientos", {
+        method: "POST",
+        body: JSON.stringify(datosEnviar),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
         .then((res) => res.json())
         .catch((error) => console.error("Error", error))
         .then((response) => console.log("Success", response));
-      alert("tratamiento ACTUALIZADO");
-      this.$router.push(`/listar-tratamientos`);
+
+      alert("tratamiento registrado");
+      this.$router.push("/listar-tratamientos");
     },
   },
 };
 </script>
+
 
 <style>
 </style>

@@ -1,6 +1,8 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 const routes = [
+
+  //rutas de login
   {
     path: '/',
     redirect: '/login'
@@ -23,12 +25,9 @@ const routes = [
     component: () => import(/* webpackChunk: "homepage" */'@/modules/login/pages/HomePage.vue'),
 
   },
-  {
-    path: '/listar-pacientes',
-    name: 'Listar-pacientes',
-    component: () => import(/* webpackChunk: "listar paceintes" */'@/modules/paciente/pages/Listar-pacientes.vue'),
 
-  }, {
+  //rutas de tratamientos
+  {
     path: '/listar-tratamientos',
     name: 'Listar-tratamientos',
     component: () => import(/* webpackChunk: "listar trtameintos" */'@/modules/tratamiento/pages/Listar-tratamientos.vue'),
@@ -45,7 +44,27 @@ const routes = [
     name: 'Nuevo-Tratameinto',
     component: () => import(/* webpackChunk: "nuevo trtameintos" */'@/modules/tratamiento/pages/Nuevo-tratamiento.vue'),
 
-  }
+  },
+  //rutas de pacientes
+  {
+    path: '/listar-pacientes',
+    name: 'Listar-pacientes',
+    component: () => import(/* webpackChunk: "listar paceintes" */'@/modules/paciente/pages/Listar-pacientes.vue'),
+
+  },
+  {
+    path: '/editar-pacientes/:id',
+    name: 'Editar-pacientes',
+    component: () => import(/* webpackChunk: "editar paceintes" */'@/modules/paciente/pages/Editar-pacientes.vue'),
+
+  },
+  {
+    path:'/nuevo-paciente',
+    name: 'Nuevo-Paciente',
+    component: () => import(/* webpackChunk: "nuevo paceinte" */'@/modules/paciente/pages/Nuevo-paciente.vue'),
+
+  },
+  
 ]
 
 const router = createRouter({

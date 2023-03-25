@@ -1,151 +1,114 @@
 <template>
-  <h1>Listado de pacientes</h1>
+ <header>
+    <div class="wrapper">
+      <h1>Listado de Pacientes</h1>
+
+      <RouterLink to="/nuevo-paciente">
+        <button type="button" class="btn btn-info">Nuevo paceinte</button>
+      </RouterLink>
+
+      <RouterLink to="/home-page">
+        <button type="button" class="btn btn-secondary">volver</button>
+      </RouterLink>
+
+      <nav>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Dni</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido</th>
+
+              <th scope="col">Telefono</th>
+              <th scope="col">Domicilio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              class="text-center"
+              v-for="paciente in pacientes"
+              :key="paciente.codigo"
+            >
+              <td scope="row">{{ paciente?.dni }}</td>
+              <td>{{ paciente.nombre }}</td>
+              <td>{{ paciente.apellido }}</td>
+              <td>{{ paciente.telefono }}</td>
+              <td>{{ paciente.calle }},{{paciente.localidad}}</td>
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                  v-on:click="esEditar(paciente.dni)"
+                >
+                  Editar
+                </button>
+              </td>
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  v-on:click="borraRegistro(tratamiento.codigo)"
+                >
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </nav>
 
 
-
-
-
-
-<!-- <div *ngIf="pacienteSeleccionado.dni == 0">
-  <h1 style="text-align: center; margin-top: 50px">LISTADO DE PACIENTES</h1>
-  <button
-  type="submit"
-  
-  
-  id="registrar"
-  routerLink="/crear-paciente"
->
-  REGISTRAR
-</button>
-  <div class="container d-flex align-items-center justify-content-center">
-    <table
-      *ngIf="listPacientes.length > 0"
-      class="table table-dark table-striped"
-      style="width: 1000px;margin-top: 100px; "
       
-    >
-      <thead>
-        <tr>
-          <th scope="col">Dni</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Apellido</th>
-          <th scope="col">Telefono</th>
-          <th scope="col">Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let paciente of listPacientes">
-          <td>{{ paciente.dni }}</td>
-          <td>{{ paciente.nombre }}</td>
-          <td>{{ paciente.apellido }}</td>
-          <td>{{ paciente.telefono }}</td>
-          <td>
-            <i
-              (click)="gestionP(paciente)"
-
-              class="fa-solid fa-pen-to-square text-primary"
-                          ></i>
-
-
-            <i
-              (click)="eliminarPaciente(paciente._id)"
-              class="fa-solid fa-trash text-danger"
-            ></i>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <h5
-      style="text-align: center; margin-top: 10px"
-      *ngIf="listPacientes.length == 0"
-    >
-      no hay productos para mostrar
-    </h5>
-  </div>
-
-  <button
-    type="button"
-    class="btnCS"
-    id="btn3"
-    routerLink="/buscar-listado-gestion"
-  >
-    VOLVER
-  </button>
-</div>
-<div *ngIf="pacienteSeleccionado.dni != 0">
-  <app-paciente-x [paciente]="pacienteSeleccionado" (devolucion)="devolver()">
-  </app-paciente-x>
-</div>
- -->
-
-
-
-
+    </div>
+  </header>
 
 </template>
 
 <script>
 
 
-/* import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { Observable } from 'rxjs';
-import { Paciente } from 'src/app/models/paciente';
-import { PacienteService } from 'src/app/services/paciente.service';
 
-
-@Component({
-  selector: 'app-listar-pacientes',
-  templateUrl: './listar-pacientes.component.html',
-  styleUrls: ['./listar-pacientes.component.css']
-})
-export class ListarPacientesComponent implements OnInit {
-
-  listPacientes: Paciente[]=[];
-  //pacienteSeleccionado: any
-  pacienteSeleccionado: Paciente = new Paciente(0, '', '',0, new Date(), '', '', '')
-  constructor(private _pacienteService: PacienteService, private toastr: ToastrService,private router:Router) { }
-
-  ngOnInit(): void {
-    this.obtenerPacientes();
-  }
-  obtenerPacientes() {
-
-    //al devolver un paceinte nos tenemos que suscribir
-    this._pacienteService.getPacientes().subscribe((data: Array<Paciente> )=>{
-      console.log(data);
-      console.log(this.listPacientes);
-
-      this.listPacientes=data;
-      console.log(this.listPacientes);
-
-    }, error =>{
-      console.log(error);
-    })
-
-  }
-  eliminarPaciente(id:any){
-    this._pacienteService.eliminarPaciente(id).subscribe(data =>{
-      this.toastr.error('El paciente fue eliminado cone exito','Paciente eliminado');
-      this.obtenerPacientes();
-    }, error =>{
-      console.log(error);
-    })
-  }
-  gestionP(paciente:Paciente){
-    this.router.navigate(['/paciente-x/'+paciente._id])
-    /* this.pacienteSeleccionado=paciente;
-    console.log(this.pacienteSeleccionado)
-  } */
-/* 
-  devolver(){
-    console.log('test')
-    this.pacienteSeleccionado=  new Paciente(0, '', '',0, new Date(), '', '', '')
-  }
-
-} */ 
 export default {
+    data() {
+    return {
+      pacientes: [],
+    };
+  },
+  mounted() {
+    this.consultarPacientes();
+  },
+  methods:{
+    
+    consultarPacientes() {
+      fetch("http://localhost:4000/api/pacientes")
+        .then((respuesta) => respuesta.json())
+        .then((datosRespuesta) => {
+          console.log(datosRespuesta);
+          this.pacientes = [];
+          if (typeof datosRespuesta[0].success === "undefined") {
+            this.pacientes = datosRespuesta;
+          }
+        })
+        .catch(console.log);
+    },
+    esEditar(id) {
+      this.$router.push(`/editar-pacientes/${id}`);
+    },
+
+    borraRegistro(id) {
+      fetch("http://localhost:4000/api/pacientes/" + id, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((dataRes) => {
+          console.log(dataRes);
+        })
+        .catch(console.log)
+
+      alert("paciente eliminado")
+      location.reload()
+    },
+  }
 
 }
 </script>
