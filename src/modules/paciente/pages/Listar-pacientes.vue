@@ -47,7 +47,7 @@
                 <button
                   type="button"
                   class="btn btn-danger"
-                  v-on:click="borraRegistro(tratamiento.codigo)"
+                  v-on:click="borraRegistro(paciente.dni)"
                 >
                   Eliminar
                 </button>

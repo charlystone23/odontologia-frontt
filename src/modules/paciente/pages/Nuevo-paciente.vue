@@ -34,14 +34,14 @@
         <input
           type="text"
           class="form-control"
-          v-model="paciente.descripcion"
-          id="descripcion"
-          name="descripcion"
-          placeholder="Descripcion"
+          v-model="paciente.apellido"
+          id="apellido"
+          name="apellido"
+          placeholder="Apellido"
           required
         />
         <small id="helpId" class="form-text text-muted"
-          >Descripcion del tratamiento</small
+          >Apellido del Paciente</small
         >
       </div>
 
@@ -49,30 +49,85 @@
         <input
           type="number"
           class="form-control"
-          v-model="paciente.precio"
-          id="precio"
-          name="precio"
-          placeholder="Precio"
+          v-model="paciente.telefono"
+          id="telefono"
+          name="telefono"
+          placeholder="Telefono"
           required
         />
         <small id="helpId" class="form-text text-muted"
-          >Precio del tratamiento</small
+          >Telefono del paciente</small
         >
       </div>
+
       <div class="mb-3">
         <input
           type="text"
           class="form-control"
-          v-model="paciente.duracion"
-          id="duracion"
-          name="duracion"
-          placeholder="Duracion"
+          v-model="paciente.fnac"
+          id="fnac"
+          name="fnac"
+          placeholder="Fecha de nacimiento"
           required
         />
         <small id="helpId" class="form-text text-muted"
-          >Duracion del tratamiento</small
+          >Formato: DD/MM/AA</small
         >
       </div>
+
+
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          v-model="paciente.calle"
+          id="calle"
+          name="calle"
+          placeholder="Calle"
+          required
+        />
+        <small id="helpId" class="form-text text-muted"
+          >Calle</small
+        >
+      </div>
+
+
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          v-model="paciente.localidad"
+          id="localidad"
+          name="localidad"
+          placeholder="Localidad"
+          required
+        />
+        <small id="helpId" class="form-text text-muted"
+          >Localidad</small
+        >
+      </div>
+
+   <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          v-model="paciente.provincia"
+          id="provincia"
+          name="provincia"
+          placeholder="Provincia"
+          required
+        />
+        <small id="helpId" class="form-text text-muted"
+          >Provincia</small
+        >
+      </div>
+
+
+
+
+
+
+
 
       <div>
         <button type="submit" class="btn btn-primary">Agregar</button>
@@ -88,9 +143,7 @@
 
 
 <script>
-import {} from "@/modules/tratamiento/pages/Listar-tratamientos.vue";
 export default {
-  name: "Nuevo-tratamiento",
 
   data() {
     return {
@@ -102,16 +155,19 @@ export default {
       console.log(this.tratamiento);
 
       var datosEnviar = {
-        codigo: this.tratamiento.codigo,
-        nombre: this.tratamiento.nombre,
-        descripcion: this.tratamiento.descripcion,
-        precio: this.tratamiento.precio,
-        duracion: this.tratamiento.duracion,
+        dni: this.paciente.dni,
+        nombre: this.paciente.nombre,
+        apellido: this.paciente.apellido,
+        telefono: this.paciente.telefono,
+        fnac: this.paciente.fnac,
+        calle:this.paciente.calle,
+        localidad: this.paciente.localidad,
+        provincia: this.paciente.provincia
       };
 
       console.log(datosEnviar);
 
-      await fetch("http://localhost:4000/api/tratamientos", {
+      await fetch("http://localhost:4000/api/pacientes", {
         method: "POST",
         body: JSON.stringify(datosEnviar),
         headers: {
@@ -122,8 +178,8 @@ export default {
         .catch((error) => console.error("Error", error))
         .then((response) => console.log("Success", response));
 
-      alert("tratamiento registrado");
-      this.$router.push("/listar-tratamientos");
+      alert("pacientes registrado");
+      this.$router.push("/listar-pacientes");
     },
   },
 };
