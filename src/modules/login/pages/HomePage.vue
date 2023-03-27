@@ -1,3 +1,4 @@
+import { Paciente } from '../../../models/paciente';
 <template>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
@@ -6,9 +7,12 @@
         <div class="contenido-header">
             <nav class="nav">
                 <ul id="links">
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#tratamientos">Tratamientos</a></li>
-                    <li><a href="paciente.html">Pacientes</a></li>
+                    
+                    <li><router-link to="home-page">Inicio</router-link></li>
+                    <li><router-link to="listar-tratamientos">Tratamientos</router-link></li>
+
+                    <li><router-link to="listar-pacientes">Pacientes</router-link></li>
+
                 </ul>
             </nav>
             <nav class="nav2">
@@ -22,7 +26,6 @@
             </nav>
         </div>
         <div class="sidebar">
-            <a href="" class="btn-acento">+</a>
         </div>
 
         <section  class="main">   
@@ -31,8 +34,9 @@
                  <RouterLink to="/listar-pacientes"> <button type="button" class="btn-acento">Pacientes</button></RouterLink>
                   <RouterLink to="/listar-tratamientos"><button type="button" class="btn-acento">Tratamientos</button></RouterLink>
 
-                    <a href="" class="btn-desabilitado">AGENDA</a>
-                    <a href="cerrar_sesion.html" class="btn-secondary">CERRAR SESION</a>
+                    <a  class="btn-desabilitado">AGENDA</a>
+                <RouterLink to="/login-auth"><button type="button" class="btn-secondary">Cerrar Sesion</button></RouterLink>
+
                 </div>
             </div>
 

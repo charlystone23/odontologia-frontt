@@ -4,7 +4,7 @@
       <h1>Listado de Pacientes</h1>
 
       <RouterLink to="/nuevo-paciente">
-        <button type="button" class="btn btn-info">Nuevo paceinte</button>
+        <button type="button" class="btn btn-info">Nuevo paciente</button>
       </RouterLink>
 
       <RouterLink to="/home-page">
@@ -114,5 +114,67 @@ export default {
 </script>
 
 <style>
+.btn-acento {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 48px;
+    color: #FAD8D6;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.25px;
+    background-color: #EE596D;
+    width: 409px;
+    height: 194px;
+    border-radius: 40px;
+    border: none;
+    margin: 2% 0% 2% 0%;
+    cursor: pointer;
+    transition: all 1s ease;    
+}
+.btn-desabilitado {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 48px;
+    color: #FAD8D6;
+    text-transform: uppercase;
+    text-decoration: none;
+    background-color: #b6b6b6;
+    width: 409px;
+    height: 194px;
+    border-radius: 40px;
+    border: none;
+    margin: 2% 0% 2% 0%;
+    cursor: pointer;
+    transition: all 1s ease;
+}
+
+
+.btn-secondary {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    color: #00002E;
+    text-transform: uppercase;
+    text-decoration: none;
+    background-color: #FAD8D6;
+    width: 409px;
+    height: 67px;
+    border-radius: 40px;
+    border: none;
+    margin: 5% 0% 5% 0%;
+    cursor: pointer;
+    margin: 5% 0% 5% 0%;
+    cursor: pointer;
+    transition: all 1s ease;
+}
+
+.btn-primary:hover {
+    background-color: #00002E;
+}
+
+.btn-acento:hover {
+    background-color: #847996;
+}
+
 
 </style>

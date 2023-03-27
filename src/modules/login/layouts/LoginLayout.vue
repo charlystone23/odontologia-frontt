@@ -13,10 +13,11 @@
  </section>
 </template>
 
-<style scoped>.principal {
+<style scoped>
+.principal {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-image: url("../../../assets/fondo.png");
   background-size: cover;
   background-position: center;
@@ -24,6 +25,7 @@
 }
 .principal .menu {
   width: 43%;
+  height: 100vh;
   padding: 2% 0%;
   box-sizing: border-box;
   text-align: center;

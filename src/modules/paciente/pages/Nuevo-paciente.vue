@@ -3,9 +3,12 @@
     <div class="contenido-header">
       <nav class="nav">
         <ul id="links">
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#tratamientos">Tratamientos</a></li>
-          <li><a href="paciente.html">Pacientes</a></li>
+
+          <li><router-link to="home-page">Inicio</router-link></li>
+          <li><router-link to="listar-tratamientos">Tratamientos</router-link></li>
+
+          <li><router-link to="listar-pacientes">Pacientes</router-link></li>
+
         </ul>
       </nav>
       <nav class="nav2">
@@ -22,7 +25,6 @@
     <div class="main">
 
       <div class="sidebar">
-        <a href="" class="btn-acento">+</a>
       </div>
 
       <div class="main-container">
@@ -32,67 +34,67 @@
 
         <div class="titulo">DATOS PERSONALES</div>
         <div class="contenedor-datos">
-        <div class="formulario" style="margin-left: 500px">
-          <form class="col-5" v-on:submit.prevent="agregarRegistro">
-            <div class="mb-3">
-              <input type="number" class="form-control" v-model="paciente.dni" id="dni" name="dni" placeholder="Dni"
-                required />
-              <small id="helpId" class="form-text text-muted">Dni del paciente</small>
-            </div>
-            <div class="mb-3">
-              <input type="text" class="form-control" v-model="paciente.nombre" id="nombre" name="nombre"
-                placeholder="Nombre" required />
-              <small id="helpId" class="form-text text-muted">Nombre del paciente</small>
-            </div>
-            <div class="mb-3">
-              <input type="text" class="form-control" v-model="paciente.apellido" id="apellido" name="apellido"
-                placeholder="Apellido" required />
-              <small id="helpId" class="form-text text-muted">Apellido del Paciente</small>
-            </div>
+          <div class="formulario" style="margin-left: 500px">
+            <form class="col-5" v-on:submit.prevent="agregarRegistro">
+              <div class="mb-3">
+                <input type="number" class="form-control" v-model="paciente.dni" id="dni" name="dni" placeholder="Dni"
+                  required />
+                <small id="helpId" class="form-text text-muted">Dni del paciente</small>
+              </div>
+              <div class="mb-3">
+                <input type="text" class="form-control" v-model="paciente.nombre" id="nombre" name="nombre"
+                  placeholder="Nombre" required />
+                <small id="helpId" class="form-text text-muted">Nombre del paciente</small>
+              </div>
+              <div class="mb-3">
+                <input type="text" class="form-control" v-model="paciente.apellido" id="apellido" name="apellido"
+                  placeholder="Apellido" required />
+                <small id="helpId" class="form-text text-muted">Apellido del Paciente</small>
+              </div>
 
-            <div class="mb-3">
-              <input type="number" class="form-control" v-model="paciente.telefono" id="telefono" name="telefono"
-                placeholder="Telefono" required />
-              <small id="helpId" class="form-text text-muted">Telefono del paciente</small>
-            </div>
+              <div class="mb-3">
+                <input type="number" class="form-control" v-model="paciente.telefono" id="telefono" name="telefono"
+                  placeholder="Telefono" required />
+                <small id="helpId" class="form-text text-muted">Telefono del paciente</small>
+              </div>
 
-            <div class="mb-3">
-              <input type="text" class="form-control" v-model="paciente.fnac" id="fnac" name="fnac"
-                placeholder="Fecha de nacimiento" required />
-              <small id="helpId" class="form-text text-muted">Formato: DD/MM/AA</small>
-            </div>
-
-
-            <div class="mb-3">
-              <input type="text" class="form-control" v-model="paciente.calle" id="calle" name="calle" placeholder="Calle"
-                required />
-              <small id="helpId" class="form-text text-muted">Calle</small>
-            </div>
+              <div class="mb-3">
+                <input type="text" class="form-control" v-model="paciente.fnac" id="fnac" name="fnac"
+                  placeholder="Fecha de nacimiento" required />
+                <small id="helpId" class="form-text text-muted">Formato: DD/MM/AA</small>
+              </div>
 
 
-            <div class="mb-3">
-              <input type="text" class="form-control" v-model="paciente.localidad" id="localidad" name="localidad"
-                placeholder="Localidad" required />
-              <small id="helpId" class="form-text text-muted">Localidad</small>
-            </div>
+              <div class="mb-3">
+                <input type="text" class="form-control" v-model="paciente.calle" id="calle" name="calle"
+                  placeholder="Calle" required />
+                <small id="helpId" class="form-text text-muted">Calle</small>
+              </div>
 
-            <div class="mb-3">
-              <input type="text" class="form-control" v-model="paciente.provincia" id="provincia" name="provincia"
-                placeholder="Provincia" required />
-              <small id="helpId" class="form-text text-muted">Provincia</small>
-            </div>
-          </form>
-        </div>
-        </div>
-        
-         <div class="menu-izq">
-            <button type="submit" class="btn-acento">Registrar</button>
-            <RouterLink to="/listar-pacientes">
-              <button type="button" class="btn-secundary">Cancelar</button>
-            </RouterLink>
+
+              <div class="mb-3">
+                <input type="text" class="form-control" v-model="paciente.localidad" id="localidad" name="localidad"
+                  placeholder="Localidad" required />
+                <small id="helpId" class="form-text text-muted">Localidad</small>
+              </div>
+
+              <div class="mb-3">
+                <input type="text" class="form-control" v-model="paciente.provincia" id="provincia" name="provincia"
+                  placeholder="Provincia" required />
+                <small id="helpId" class="form-text text-muted">Provincia</small>
+              </div>
+            </form>
           </div>
         </div>
+
+        <div class="menu-izq">
+          <button type="submit" class="btn-acento">Agregar</button>
+          <RouterLink to="/listar-pacientes">
+            <button type="button" class="btn-secondary">Cancelar</button>
+          </RouterLink>
+        </div>
       </div>
+    </div>
 
 
   </div>
@@ -117,7 +119,7 @@ export default {
         apellido: this.paciente.apellido,
         telefono: this.paciente.telefono,
         fnac: this.paciente.fnac,
-        calle:this.paciente.calle,
+        calle: this.paciente.calle,
         localidad: this.paciente.localidad,
         provincia: this.paciente.provincia
       };
@@ -144,8 +146,6 @@ export default {
 
 
 <style>
-
-
 * {
   margin: 0;
   padding: 0;
@@ -166,8 +166,9 @@ html {
 .contenido-header {
 
   background-color: #FAD8D6;
+  color: black;
   width: 100%;
-  height: 60px;
+  height: 50px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -177,7 +178,6 @@ html {
 
 .main {
   width: 100%;
-  height: 100vh;
   background-image: url("../../../assets/image27.png");
   background-size: cover;
   display: flex;
@@ -355,7 +355,7 @@ html {
 }
 
 
-.btn-secundary {
+.btn-secondary {
   font-style: normal;
   font-weight: 500;
   font-size: 30px;
