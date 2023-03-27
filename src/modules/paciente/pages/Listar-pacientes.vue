@@ -1,75 +1,80 @@
 <template>
- <header>
+  <header>
     <div class="wrapper">
       <h1>Listado de Pacientes</h1>
 
       <RouterLink to="/nuevo-paciente">
-        <button type="button" class="btn btn-info">Nuevo paceinte</button>
+        <button type="button" class="btn btn-success">Nuevo paceinte</button>
       </RouterLink>
 
       <RouterLink to="/home-page">
         <button type="button" class="btn btn-secondary">volver</button>
       </RouterLink>
+      <div class="container">
+        <div class="row">
+          <div>
+            <table class="table mt-4">
+              <thead>
+                <tr>
+                  <th scope="col">Dni</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Apellido</th>
 
-      <nav>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Dni</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Apellido</th>
-
-              <th scope="col">Telefono</th>
-              <th scope="col">Domicilio</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              class="text-center"
-              v-for="paciente in pacientes"
-              :key="paciente.codigo"
-            >
-              <td scope="row">{{ paciente?.dni }}</td>
-              <td>{{ paciente.nombre }}</td>
-              <td>{{ paciente.apellido }}</td>
-              <td>{{ paciente.telefono }}</td>
-              <td>{{ paciente.calle }},{{paciente.localidad}}</td>
-              <td>
-                <button
-                  type="button"
-                  class="btn btn-warning"
-                  v-on:click="esEditar(paciente.dni)"
+                  <th scope="col">Telefono</th>
+                  <th scope="col">Domicilio</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="text-center"
+                  v-for="paciente in pacientes"
+                  :key="paciente.codigo"
                 >
-                  Editar
-                </button>
-              </td>
-              <td>
-                <button
-                  type="button"
-                  class="btn btn-danger"
-                  v-on:click="borraRegistro(paciente.dni)"
-                >
-                  Eliminar
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </nav>
-
-
-      
+                  <td scope="row">{{ paciente?.dni }}</td>
+                  <td>{{ paciente.nombre }}</td>
+                  <td>{{ paciente.apellido }}</td>
+                  <td>{{ paciente.telefono }}</td>
+                  <td>{{ paciente.calle }},{{ paciente.localidad }}</td>
+                  <td>
+                    <button
+                      type="button"
+                      class="btn btn-warning"
+                      v-on:click="esEditar(paciente.dni)"
+                    >
+                      Editar
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      type="button"
+                      class="btn btn-danger"
+                      v-on:click="borraRegistro(paciente.dni)"
+                    >
+                      Eliminar
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      type="button"
+                      class="btn btn-info"
+                      v-on:click="gestionPaciente(paciente.dni)"
+                    >
+                      Gestion
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
-
 </template>
 
 <script>
-
-
-
 export default {
-    data() {
+  data() {
     return {
       pacientes: [],
     };
@@ -77,8 +82,7 @@ export default {
   mounted() {
     this.consultarPacientes();
   },
-  methods:{
-    
+  methods: {
     consultarPacientes() {
       fetch("http://localhost:4000/api/pacientes")
         .then((respuesta) => respuesta.json())
@@ -94,6 +98,9 @@ export default {
     esEditar(id) {
       this.$router.push(`/editar-pacientes/${id}`);
     },
+    gestionPaciente(id) {
+      this.$router.push(`/paciente-tratamiento/${id}`);
+    },
 
     borraRegistro(id) {
       fetch("http://localhost:4000/api/pacientes/" + id, {
@@ -103,16 +110,14 @@ export default {
         .then((dataRes) => {
           console.log(dataRes);
         })
-        .catch(console.log)
+        .catch(console.log);
 
-      alert("paciente eliminado")
-      location.reload()
+      alert("paciente eliminado");
+      location.reload();
     },
-  }
-
-}
+  },
+};
 </script>
 
 <style>
-
 </style>

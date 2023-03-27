@@ -64,7 +64,26 @@ const routes = [
     component: () => import(/* webpackChunk: "nuevo paceinte" */'@/modules/paciente/pages/Nuevo-paciente.vue'),
 
   },
-  
+  //rutas gestion paciente
+
+  {
+    path:'/paciente-tratamiento/:id',
+    name: 'Paciente-tratamiento',
+    component: () => import(/* webpackChunk: " paceinte tratamiento" */'@/modules/pacientetratamiento/pages/PacienteTratamiento.vue'),
+
+  },
+  {
+    path:'/paciente-tratamiento-listar/:id',
+    name: 'Paciente-tratamiento-listar',
+    component: () => import(/* webpackChunk: " paceinte tratamiento" */'@/modules/pacientetratamiento/pages/Paciente-tratamiento-listar.vue'),
+
+  },
+  {
+    path:'/paciente-tratamiento-crear/:id',
+    name: 'Paciente-tratamiento-crear',
+    component: () => import(/* webpackChunk: " paceinte tratamiento" */'@/modules/pacientetratamiento/pages/Paciente-tratamiento-crear.vue'),
+
+  },
 ]
 
 const router = createRouter({
