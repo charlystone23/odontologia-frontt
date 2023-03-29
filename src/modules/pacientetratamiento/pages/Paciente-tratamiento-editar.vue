@@ -99,12 +99,12 @@ export default {
       console.log(this.$route.params);
       console.log(this.$route.params.id);
       console.log("asd");
-      console.log(this.$route.params.idtratamiento);
+      console.log(this.$route.params.idT);
       fetch(
         "http://localhost:4000/api/pacientetratamiento/" +
           this.$route.params.id +
           "/" +
-          this.$route.params.idtratamiento,
+          this.$route.params.idT,
         {
           method: "GET",
         }
@@ -119,7 +119,10 @@ export default {
         .catch(console.log);
     },
     async modificarRegistro() {
-      //console.log(this.tratamiento);
+       console.log(this.$route.params);
+      console.log(this.$route.params.id);
+      console.log("asd");
+      console.log(this.$route.params.idT);
       console.log(this.tratamientos.codigo);
       var datosEnviar = {
         dni: this.$route.params.id,
@@ -132,8 +135,10 @@ export default {
       console.log(datosEnviar);
       let datos = JSON.stringify(datosEnviar);
       await fetch(
-        "http://localhost:4000/api/pacientetratamiento" +
-          this.$route.params.idtratamiento,
+        "http://localhost:4000/api/pacientetratamiento/" +
+          this.$route.params.id +
+          "/" +
+          this.$route.params.idT,
         {
           method: "PUT",
           body: datos,
