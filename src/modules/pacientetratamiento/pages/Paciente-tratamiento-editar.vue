@@ -3,7 +3,6 @@
   <div class="formulario" style="margin-left: 500px">
     <form class="col-5" v-on:submit.prevent="modificarRegistro">
       <h2>Nombre del tratamiento:{{ tratamientoPaciente.nombre }}</h2>
-   
 
       <div class="mb-3">
         <input
@@ -68,11 +67,7 @@
       <div>
         <button type="submit" class="btn btn-warning">Actualizar</button>
 
-        <button
-          type="button"
-          class="btn btn-secondary"
-          v-on:click="volver(id)"
-        >
+        <button type="button" class="btn btn-secondary" v-on:click="volver(id)">
           cancelar
         </button>
       </div>
@@ -119,7 +114,7 @@ export default {
         .catch(console.log);
     },
     async modificarRegistro() {
-       console.log(this.$route.params);
+      console.log(this.$route.params);
       console.log(this.$route.params.id);
       console.log("asd");
       console.log(this.$route.params.idT);
@@ -149,11 +144,13 @@ export default {
       )
         .then((res) => res.json())
         .catch((error) => console.error("Error", error))
-        .then((response) => console.log("Success", response));
-      alert("tratamiento del paciente actualizado");
-      this.$router.push(`/paciente-tratamiento-listar/${this.route.params.id}`);
+        .then((response) => {
+          console.log("Success", response)
+        });
+        this.$toast.success('¡Se ha actualizado el paciente de forma exitosa!');
+        this.$router.push(`/paciente-tratamiento-listar/${this.$route.params.id}`);
     },
-   
+
     // Obtengo los tratamientos
     consultarTratamientos() {
       fetch("http://localhost:4000/api/tratamientos")
@@ -168,7 +165,7 @@ export default {
         .catch(console.log);
     },
     volver(id) {
-        id=this.$route.params.id
+      id = this.$route.params.id;
       this.$router.push(`/paciente-tratamiento-listar/${id}`);
     },
   },

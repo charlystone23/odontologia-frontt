@@ -133,8 +133,8 @@ export default {
         })
         .catch(console.log);
 
-      alert("tratamiento eliminado");
-      location.reload(); 
+        this.$toast.error('¡Se ha eliminado el trtamiento del paciente!');
+location.reload(); 
     },
   },
 };
