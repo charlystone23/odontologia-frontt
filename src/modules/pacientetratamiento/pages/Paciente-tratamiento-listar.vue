@@ -1,7 +1,5 @@
 <template>
-  <h1>
-    listadod e trat dni codigo tratameitno finicio medicacion visitas estado
-  </h1>
+  
 
   <header>
     <div class="wrapper">
@@ -47,7 +45,7 @@
                 <button
                   type="button"
                   class="btn btn-warning"
-                  v-on:click="esEditar(pacTrat.codigo)"
+                  v-on:click="esEditar(pacTrat.dni, pacTrat._id)"
                 >
                   Editar
                 </button>
@@ -83,8 +81,10 @@ export default {
   },
   methods: {
     //OBTENER PACIENTE TRATAMIENTO
-    consultarTratamientos() {
-      fetch("http://localhost:4000/api/pacientetratamiento")
+  consultarTratamientos() {
+      fetch("http://localhost:4000/api/pacientetratamiento/" + this.$route.params.id, {
+        method: "GET",
+      })
         .then((respuesta) => respuesta.json())
         .then((datosRespuesta) => {
           console.log(datosRespuesta);
@@ -97,17 +97,15 @@ export default {
         })
         .catch(console.log);
     },
-    esEditar(id) {
-      this.$router.push(`/editar-tratamientos/${id}`);
+   esEditar(id, idtratamiento) {
+      this.$router.push(`/paciente-tratamiento-editar/${id}/${idtratamiento}`);
     },
     nuevoTP(id) {
       this.$router.push(`/paciente-tratamiento-crear/${id}`);
     },
 
     //OBTENER EL PACIENTE
-    obtenerInfo() {
-      console.log(this.$route.params);
-
+   obtenerInfo() {
       fetch("http://localhost:4000/api/pacientes/" + this.$route.params.id, {
         method: "GET",
       })
