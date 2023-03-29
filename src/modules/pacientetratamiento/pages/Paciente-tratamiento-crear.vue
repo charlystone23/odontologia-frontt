@@ -1,8 +1,5 @@
-import { Tratamiento } from '../../../../../../Users/CharlyStone23/Documents/GitHub/Odontologia-Last/cliente/src/app/models/tratamiento';
 <template>
-  <h1>
-    listadod e trat dni codigo tratameitno finicio medicacion visitas estado
-  </h1>
+ 
   <h1>Nuevo Tratamiento del paciente</h1>
   <div class="formulario" style="margin-left: 500px">
     <form class="col-5" v-on:submit.prevent="agregarRegistro">
@@ -136,8 +133,9 @@ export default {
         .catch((error) => console.error("Error", error))
         .then((response) => console.log("Success", response));
 
-      alert("tratamiento del paciente registrado");
       this.$router.push(`/paciente-tratamiento-listar/${datosEnviar.dni}`);
+              this.$toast.success('¡Se ha CREADO el trtamiento del paciente EXITOSAMENTE!');
+
     },
 
 

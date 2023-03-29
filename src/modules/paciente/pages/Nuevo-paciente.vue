@@ -159,8 +159,9 @@ export default {
         .catch((error) => console.error("Error", error))
         .then((response) => console.log("Success", response));
 
-      alert("pacientes registrado");
       this.$router.push("/listar-pacientes");
+      this.$toast.success('¡Se ha AGREGADO el paciente EXITOSAMENTE!');
+
     },
   },
 };

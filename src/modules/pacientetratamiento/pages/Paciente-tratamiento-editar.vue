@@ -147,8 +147,9 @@ export default {
         .then((response) => {
           console.log("Success", response)
         });
-        this.$toast.success('¡Se ha actualizado el paciente de forma exitosa!');
         this.$router.push(`/paciente-tratamiento-listar/${this.$route.params.id}`);
+                this.$toast.warning('¡Se ha ACTUALIZADO el paciente de forma EXITOSAMENTE!');
+
     },
 
     // Obtengo los tratamientos

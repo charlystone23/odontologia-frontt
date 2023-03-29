@@ -1,23 +1,23 @@
 <template>
-  
-
   <header>
     <div class="wrapper">
       <h1>Tratamientos de:{{ paciente.nombre }} {{ paciente.apellido }}</h1>
 
-      
-        <button 
-        type="button" 
+      <button
+        type="button"
         class="btn btn-info"
-        v-on:click="nuevoTP(paciente.dni)">Nuevo tratamiento</button>
-      
+        v-on:click="nuevoTP(paciente.dni)"
+      >
+        Nuevo tratamiento
+      </button>
 
-      
-        <button 
-        type="button" 
+      <button
+        type="button"
         class="btn btn-secondary"
-        v-on:click="volver(paciente.dni)">volver</button>
-      
+        v-on:click="volver(paciente.dni)"
+      >
+        volver
+      </button>
 
       <nav>
         <table class="table">
@@ -72,7 +72,7 @@ export default {
   data() {
     return {
       paciente: [],
-      pacienteTratamiento:[]
+      pacienteTratamiento: [],
     };
   },
   mounted() {
@@ -81,23 +81,26 @@ export default {
   },
   methods: {
     //OBTENER PACIENTE TRATAMIENTO
-  consultarTratamientos() {
-      fetch("http://localhost:4000/api/pacientetratamiento/" + this.$route.params.id, {
-        method: "GET",
-      })
+    consultarTratamientos() {
+      fetch(
+        "http://localhost:4000/api/pacientetratamiento/" +
+          this.$route.params.id,
+        {
+          method: "GET",
+        }
+      )
         .then((respuesta) => respuesta.json())
         .then((datosRespuesta) => {
           console.log(datosRespuesta);
           /* this.pacienteTratamiento = []; */
           if (typeof datosRespuesta[0].success === "undefined") {
-            
             this.pacienteTratamiento = datosRespuesta;
             console.log(datosRespuesta);
           }
         })
         .catch(console.log);
     },
-   esEditar(id, idtratamiento) {
+    esEditar(id, idtratamiento) {
       this.$router.push(`/paciente-tratamiento-editar/${id}/${idtratamiento}`);
     },
     nuevoTP(id) {
@@ -105,7 +108,7 @@ export default {
     },
 
     //OBTENER EL PACIENTE
-   obtenerInfo() {
+    obtenerInfo() {
       fetch("http://localhost:4000/api/pacientes/" + this.$route.params.id, {
         method: "GET",
       })
@@ -133,8 +136,10 @@ export default {
         })
         .catch(console.log);
 
-        this.$toast.error('¡Se ha eliminado el trtamiento del paciente!');
-location.reload(); 
+      location.reload();
+      this.$toast.error(
+        "¡Se ha ELIMINADO el trtamiento del paciente EXITOSAMENTE!"
+      );
     },
   },
 };

@@ -4,7 +4,7 @@
       <h1>Listado de Pacientes</h1>
 
       <RouterLink to="/nuevo-paciente">
-        <button type="button" class="btn btn-success">Nuevo paceinte</button>
+        <button type="button" class="btn btn-success">Nuevo paciente</button>
       </RouterLink>
 
       <RouterLink to="/home-page">
@@ -112,8 +112,8 @@ export default {
         })
         .catch(console.log);
 
-      alert("paciente eliminado");
       location.reload();
+      this.$toast.error("¡Se ha ELIMINADO el paciente EXITOSAMENTE!");
     },
   },
 };

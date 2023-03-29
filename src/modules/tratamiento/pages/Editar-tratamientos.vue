@@ -135,8 +135,9 @@ export default {
         .then((res) => res.json())
         .catch((error) => console.error("Error", error))
         .then((response) => console.log("Success", response));
-      alert("tratamiento ACTUALIZADO");
       this.$router.push(`/listar-tratamientos`);
+                        this.$toast.warning('¡Se ha ACTUALIZADO el tratamiento EXITOSAMENTE!');
+
     },
   },
 };

@@ -121,8 +121,9 @@ export default {
         .catch((error) => console.error("Error", error))
         .then((response) => console.log("Success", response));
 
-      alert("tratamiento registrado");
       this.$router.push("/listar-tratamientos");
+                  this.$toast.success('¡Se ha CREADO el tratamiento EXITOSAMENTE!');
+
     },
   },
 };
