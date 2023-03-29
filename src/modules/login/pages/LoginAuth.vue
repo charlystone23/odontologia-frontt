@@ -6,19 +6,15 @@
 
       <form>
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email address</label>
-          <input type="email" class="btn-primary" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email address">
-          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          <label for="exampleInputEmail1" class="form-label">Direccion de mail</label>
+          <input type="email" class="btn-primary" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Direccion de email">
         </div>
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="btn-primary" id="exampleInputPassword1" placeholder="Password">
+          <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+          <input type="password" class="btn-primary" id="exampleInputPassword1" placeholder="Contraseña">
         </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <RouterLink to="/home-page"><button type="submit" class="btn-acento">Loguin</button></RouterLink>
+        
+        <RouterLink to="/home-page"><button type="submit" class="btn-acento">Ingresar</button></RouterLink>
       </form>
     </div>
 
@@ -31,7 +27,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .principal {
   position: relative;
   width: 100%;
