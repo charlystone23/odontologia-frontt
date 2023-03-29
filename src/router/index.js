@@ -84,6 +84,12 @@ const routes = [
     component: () => import(/* webpackChunk: " paceinte tratamiento" */'@/modules/pacientetratamiento/pages/Paciente-tratamiento-crear.vue'),
 
   },
+  {
+    path:'/paciente-tratamiento-editar/:id/:idT',
+    name: 'Paciente-tratamiento-editar',
+    component: () => import(/* webpackChunk: " paceinte tratamiento" */'@/modules/pacientetratamiento/pages/Paciente-tratamiento-editar.vue'),
+
+  },
 ]
 
 const router = createRouter({
