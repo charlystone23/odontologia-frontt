@@ -6,6 +6,12 @@
 
 <button type="button" class="btn btn-dark">Agenda</button>
 
+
+
+  <RouterLink to="/login"><button type="button" class="btn btn-danger">SALIR</button></RouterLink>
+
+
+
 </template>
 
 <script>
