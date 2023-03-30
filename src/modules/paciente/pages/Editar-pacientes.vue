@@ -18,7 +18,7 @@
           placeholder="Dni"
           required
         />
-        <small id="helpId" class="form-text text-muted">Dni del paciente</small>
+        <small id="helpId" class="minit">Dni del paciente</small>
       </div>
       <div class="mb-3">
         <input
@@ -30,7 +30,7 @@
           placeholder="Nombre"
           required
         />
-        <small id="helpId" class="form-text text-muted"
+        <small id="helpId" class="minit"
           >Nombre del paciente</small
         >
       </div>
@@ -44,7 +44,7 @@
           placeholder="Apellido"
           required
         />
-        <small id="helpId" class="form-text text-muted"
+        <small id="helpId" class="minit"
           >Apellido del Paciente</small
         >
       </div>
@@ -59,7 +59,7 @@
           placeholder="Telefono"
           required
         />
-        <small id="helpId" class="form-text text-muted"
+        <small id="helpId" class="minit"
           >Telefono del paciente</small
         >
       </div>
@@ -74,7 +74,7 @@
           placeholder="Fecha de nacimiento"
           required
         />
-        <small id="helpId" class="form-text text-muted"
+        <small id="helpId" class="minit"
           >Formato: DD/MM/AA</small
         >
       </div>
@@ -89,7 +89,7 @@
           placeholder="Calle"
           required
         />
-        <small id="helpId" class="form-text text-muted">Calle</small>
+        <small id="helpId" class="minit">Calle</small>
       </div>
 
       <div class="mb-3">
@@ -102,7 +102,7 @@
           placeholder="Localidad"
           required
         />
-        <small id="helpId" class="form-text text-muted">Localidad</small>
+        <small id="helpId" class="minit">Localidad</small>
       </div>
 
       <div class="mb-3">
@@ -115,16 +115,16 @@
           placeholder="Provincia"
           required
         />
-        <small id="helpId" class="form-text text-muted">Provincia</small>
+        <small id="helpId" class="minit">Provincia</small>
       </div>
 
 
 
 
       <div>
-        <button type="submit" class="btn btn-warning">Actualizar</button>
+        <button type="submit" class="botonesC" style="background: #f0ad4e ;margin:10px">Actualizar</button>
         <RouterLink to="/listar-pacientes">
-          <button type="button" class="btn btn-secondary">
+          <button type="button" class="botonesC" style="background: grey ;margin:10px">
             cancelar
           </button></RouterLink
         >
