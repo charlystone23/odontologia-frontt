@@ -10,6 +10,7 @@
 
       <br /><br />
 
+
       <nav>
         <table class="table table-dark table-sm">
           <thead>
@@ -60,13 +61,19 @@
         </table>
       </nav>
 
+
+
       <RouterLink to="/home-page">
         <button type="button" class="botones" style="background: grey">
           Volver
         </button>
       </RouterLink>
     </div>
+    
   </header>
+
+
+  
 </template>
 
 <script>

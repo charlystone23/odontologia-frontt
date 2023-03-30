@@ -5,7 +5,7 @@
     <h2>INGRESE SU CUENTA Y CONTRASEÑA</h2>
     <br /><br /><br />
     <div class="formulario" style="margin-left: 500px">
-      <form class="col-6">
+      <form class="col-6" v-on:submit.prevent="login">
         <div class="mb-3">
           <input
             type="text"
@@ -21,7 +21,7 @@
 
         <div class="mb-3">
           <input
-            type="text"
+            type="password"
             class="form-control"
             id="pass"
             v-model="password"
@@ -33,9 +33,7 @@
         </div>
         <br /><br /><br />
         <div class="justify-content-start">
-          <RouterLink to="/home-page"
-            ><button type="submit" class="botones">INGRESAR</button></RouterLink
-          >
+          <button type="submit" class="botones">INGRESAR</button>
         </div>
       </form>
     </div>
@@ -50,9 +48,9 @@ export default {
       password: "",
     };
   },
-  mounted(){
+  /* mounted(){
     this.login()
-  },
+  }, */
 
   methods:{
     login(){
@@ -60,14 +58,16 @@ export default {
         "username" : 'lourdes',
         "password" : 'milenium123' 
       }
-      
           if(user.username == this.username && user.password == this.password){
-                  this.$router.push("/home-page");
 
+                  this.$router.push("/home-page");
+                  this.$toast.success("Bienvenido/a "+ this.username)
             
           }
           else{
             this.$toast.error('Credenciales invalidas')
+            this.username = '';
+            this.password = "";
           }
       }
     },

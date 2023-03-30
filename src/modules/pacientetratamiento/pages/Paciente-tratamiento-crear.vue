@@ -22,7 +22,7 @@
 
         <div class="mb-3">
           <input
-            type="text"
+            type="date"
             class="form-control"
             v-model="tratamientoPaciente.finicio"
             id="finicio"
@@ -84,7 +84,7 @@
               style="background: grey; margin: 10px"
             v-on:click="volver(this.$route.params.id)"
           >
-            cancelar
+            Cancelar
           </button>
         </div>
       </form>
@@ -113,7 +113,7 @@ export default {
       var datosEnviar = {
         dni: this.$route.params.id,
         nombre: this.tratamientos.codigo,
-        finicio: this.tratamientoPaciente.finicio,
+        finicio: (this.tratamientoPaciente.finicio).toString(),
         medicacion: this.tratamientoPaciente.medicacion,
         visitas: this.tratamientoPaciente.visitas,
         estado: this.tratamientoPaciente.estado,

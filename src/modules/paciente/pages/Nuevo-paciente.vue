@@ -65,7 +65,7 @@
 
         <div class="mb-3">
           <input
-            type="text"
+            type="date"
             class="form-control"
             v-model="paciente.fnac"
             id="fnac"
@@ -157,7 +157,7 @@ export default {
         nombre: this.paciente.nombre,
         apellido: this.paciente.apellido,
         telefono: this.paciente.telefono,
-        fnac: this.paciente.fnac,
+        fnac: (this.paciente.fnac).toString(),
         calle: this.paciente.calle,
         localidad: this.paciente.localidad,
         provincia: this.paciente.provincia,
