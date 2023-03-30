@@ -22,9 +22,7 @@
 
                   <th scope="col">Telefono</th>
                   <th scope="col">Domicilio</th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
+                  <th scope="col"> Acciones </th>
                 </tr>
               </thead>
               <tbody>
@@ -38,40 +36,32 @@
                   <td>{{ paciente.apellido }}</td>
                   <td>{{ paciente.telefono }}</td>
                   <td>{{ paciente.calle }},{{ paciente.localidad }}</td>
-                   <td>
+                  <td>
                     <button
                       type="button"
                       class="botonesC"
                       v-on:click="gestionPaciente(paciente.dni)"
-                      style="background:#5bc0de
- "
+                      style="background: #5bc0de"
                     >
                       Gestion
                     </button>
-                  </td>
-                  <td>
                     <button
                       type="button"
                       class="botonesC"
-                      style="background:#f0ad4e
- "
+                      style="background: #f0ad4e"
                       v-on:click="esEditar(paciente.dni)"
                     >
                       Editar
                     </button>
-                  </td>
-                  <td>
                     <button
                       type="button"
                       class="botonesC"
-                      v-on:click="borraRegistro(paciente.dni)"
-                      style="background:#d9534f
- "
+                      v-on:click="deleteItem(paciente.dni)"
+                      style="background: #d9534f"
                     >
                       Eliminar
                     </button>
                   </td>
-                 
                 </tr>
               </tbody>
             </table>
@@ -79,23 +69,42 @@
         </div>
       </div>
     </div>
+
+    <borrado-modal
+    :title="'Borrado de Paciente'"
+    :message="'¿Estas seguro que quieres borrar este paciente?'"
+    v-if="showModal"
+    @close-modal="closeModal"
+    @delete-item="confirmDelete(id)"
+    ref="BorradoModal"></borrado-modal>
+
     <RouterLink to="/home-page">
-      <button type="button" class="botones" style="background:grey">Volver</button>
+      <button type="button" class="botones" style="background: grey">
+        Volver
+      </button>
     </RouterLink>
-    
   </header>
 </template>
 
 <script>
+import BorradoModal from '../../extras/BorradoModal.vue';
+
 export default {
+  components: {
+    BorradoModal,
+  },
+
   data() {
     return {
       pacientes: [],
+      showModal: false,
     };
   },
+
   mounted() {
     this.consultarPacientes();
   },
+
   methods: {
     consultarPacientes() {
       fetch("https://server-dientito-cs23.onrender.com/api/pacientes")
@@ -103,35 +112,48 @@ export default {
         .then((datosRespuesta) => {
           console.log(datosRespuesta);
           this.pacientes = [];
-          if (typeof datosRespuesta[0].success === "undefined") {
+          if (typeof datosRespuesta[0].success === 'undefined') {
             this.pacientes = datosRespuesta;
           }
         })
         .catch(console.log);
     },
+
     esEditar(id) {
       this.$router.push(`/editar-pacientes/${id}`);
     },
     gestionPaciente(id) {
       this.$router.push(`/paciente-tratamiento/${id}`);
     },
+    
+    deleteItem(id) {
+      this.showModal = true;
+      this.id = id;
+    },
 
-    borraRegistro(id) {
-      fetch("https://server-dientito-cs23.onrender.com/api/pacientes/" + id, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((dataRes) => {
-          console.log(dataRes);
-        })
-        .catch(console.log);
+    closeModal() {
+      this.showModal = false;
+    },
 
-      location.reload();
-      this.$toast.error("¡Se ha ELIMINADO el paciente EXITOSAMENTE!");
+    async confirmDelete(id) {
+      try {
+        const res = await fetch(
+          `https://server-dientito-cs23.onrender.com/api/pacientes/${id}`,
+          {
+            method: 'DELETE',
+          }
+        );
+        if (res.ok) {
+          this.$toast.error('¡Se ha ELIMINADO el paciente EXITOSAMENTE!');
+          this.consultarPacientes();
+        }
+      } catch (err) {
+        console.log('ERROR: ', err);
+      }
+      this.showModal = false;
     },
   },
 };
 </script>
 
-<style>
-</style>
+<style></style>
