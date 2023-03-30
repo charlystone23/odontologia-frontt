@@ -35,7 +35,7 @@ export default {
     obtenerInfo() {
       console.log(this.$route.params);
 
-      fetch("http://localhost:4000/api/pacientes/" + this.$route.params.id, {
+      fetch("https://server-dientito-cs23.onrender.com/api/pacientes/" + this.$route.params.id, {
         method: "GET",
       })
         .then((res) => res.json())

@@ -107,7 +107,7 @@ export default {
 
   methods: {
     consultarPacientes() {
-      fetch('http://localhost:4000/api/pacientes')
+      fetch("https://server-dientito-cs23.onrender.com/api/pacientes")
         .then((respuesta) => respuesta.json())
         .then((datosRespuesta) => {
           console.log(datosRespuesta);
@@ -138,7 +138,7 @@ export default {
     async confirmDelete(id) {
       try {
         const res = await fetch(
-          `http://localhost:4000/api/pacientes/${id}`,
+          `https://server-dientito-cs23.onrender.com/api/pacientes/${id}`,
           {
             method: 'DELETE',
           }

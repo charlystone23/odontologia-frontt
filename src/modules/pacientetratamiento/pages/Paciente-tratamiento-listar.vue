@@ -111,7 +111,7 @@ export default {
     //OBTENER PACIENTE TRATAMIENTO
     consultarTratamientos() {
       fetch(
-        'http://localhost:4000/api/pacientetratamiento/' +
+        'https://server-dientito-cs23.onrender.com/api/pacientetratamiento/' +
           this.$route.params.id,
         {
           method: 'GET',
@@ -135,6 +135,18 @@ export default {
       this.$router.push(`/paciente-tratamiento-crear/${id}`);
     },
 
+    //OBTENER EL PACIENTE
+    obtenerInfo() {
+      fetch("https://server-dientito-cs23.onrender.com/api/pacientes/" + this.$route.params.id, {
+        method: "GET",
+      })
+        .then((res) => res.json())
+        .then((dataRes) => {
+          console.log(dataRes);
+          this.paciente = dataRes;
+        })
+        .catch(console.log);
+    },
     //ir a atras mandando el id
     volver(id) {
       this.$router.push(`/paciente-tratamiento/${id}`);
@@ -152,7 +164,7 @@ export default {
     async confirmDelete(id) {
       try {
         const res = await fetch(
-          `http://localhost:4000/api/pacientetratamiento/${id}`,
+          `https://server-dientito-cs23.onrender.com/api/pacientetratamiento/${id}`,
           {
             method: 'DELETE',
           }

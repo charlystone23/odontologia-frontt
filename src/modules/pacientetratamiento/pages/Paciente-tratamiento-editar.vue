@@ -96,7 +96,7 @@ export default {
       console.log("asd");
       console.log(this.$route.params.idT);
       fetch(
-        "http://localhost:4000/api/pacientetratamiento/" +
+        "https://server-dientito-cs23.onrender.com/api/pacientetratamiento/" +
           this.$route.params.id +
           "/" +
           this.$route.params.idT,
@@ -130,7 +130,7 @@ export default {
       console.log(datosEnviar);
       let datos = JSON.stringify(datosEnviar);
       await fetch(
-        "http://localhost:4000/api/pacientetratamiento/" +
+        "https://server-dientito-cs23.onrender.com/api/pacientetratamiento/" +
           this.$route.params.id +
           "/" +
           this.$route.params.idT,
@@ -157,7 +157,7 @@ export default {
 
     // Obtengo los tratamientos
     consultarTratamientos() {
-      fetch("http://localhost:4000/api/tratamientos")
+      fetch("https://server-dientito-cs23.onrender.com/api/tratamientos")
         .then((respuesta) => respuesta.json())
         .then((datosRespuesta) => {
           console.log(datosRespuesta);
