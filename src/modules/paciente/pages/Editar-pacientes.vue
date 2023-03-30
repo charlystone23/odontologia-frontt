@@ -1,4 +1,5 @@
 <template>
+<div class="color-fondo">
   <h1>Editar Paciente</h1>
 
   <div class="formulario" style="margin-left: 500px">
@@ -129,6 +130,7 @@
         >
       </div>
     </form>
+  </div>
   </div>
 </template>
 

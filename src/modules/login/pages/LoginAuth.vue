@@ -1,29 +1,82 @@
 <template>
-  <h2>login auth</h2>
-  <form>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  <div class="color-fondo">
+    <br /><br />
+
+    <h2>INGRESE SU CUENTA Y CONTRASEÑA</h2>
+    <br /><br /><br />
+    <div class="formulario" style="margin-left: 500px">
+      <form class="col-6">
+        <div class="mb-3">
+          <input
+            type="text"
+            v-model="username"
+            class="form-control"
+            id="user"
+            name="user"
+            placeholder="Usuario"
+            required
+          />
+          <small id="helpId" class="minit">NOMBRE DE USUARIO</small>
+        </div>
+
+        <div class="mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="pass"
+            v-model="password"
+            name="pass"
+            placeholder="Contraseña"
+            required
+          />
+          <small id="helpId" class="minit">CONTRASEÑA</small>
+        </div>
+        <br /><br /><br />
+        <div class="justify-content-start">
+          <RouterLink to="/home-page"
+            ><button type="submit" class="botones">INGRESAR</button></RouterLink
+          >
+        </div>
+      </form>
+    </div>
   </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
-  </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-   <RouterLink to="/home-page"><button type="submit" class="btn btn-primary">Submit</button></RouterLink>
-</form>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      username: "",
+      password: "",
+    };
+  },
+  mounted(){
+    this.login()
+  },
 
-}
+  methods:{
+    login(){
+      let user = {
+        "username" : 'lourdes',
+        "password" : 'milenium123' 
+      }
+      
+          if(user.username == this.username && user.password == this.password){
+                  this.$router.push("/home-page");
+
+            
+          }
+          else{
+            this.$toast.error('Credenciales invalidas')
+          }
+      }
+    },
+
+
+
+};
+
 </script>
 
-<style>
-
+<style SCOPEd>
 </style>

@@ -1,26 +1,24 @@
 <template>
-  <header>
+<br><br>
+
+  <header class="color-fondo">
     <div class="wrapper">
       <h1>Tratamientos de:{{ paciente.nombre }} {{ paciente.apellido }}</h1>
+<br>
 
       <button
         type="button"
-        class="btn btn-info"
+        class="botones" style="background:#5cb85c
+"
         v-on:click="nuevoTP(paciente.dni)"
       >
         Nuevo tratamiento
       </button>
 
-      <button
-        type="button"
-        class="btn btn-secondary"
-        v-on:click="volver(paciente.dni)"
-      >
-        volver
-      </button>
-
+   
+<br>
       <nav>
-        <table class="table">
+        <table class="table table-dark table-sm">
           <thead>
             <tr>
               <th scope="col">Nombre</th>
@@ -28,6 +26,8 @@
               <th scope="col">Medicacion</th>
               <th scope="col">Visitas Estimadas</th>
               <th scope="col">Estado</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -44,7 +44,8 @@
               <td>
                 <button
                   type="button"
-                  class="btn btn-warning"
+                  class="botonesC" style="background:#f0ad4e
+ "
                   v-on:click="esEditar(pacTrat.dni, pacTrat._id)"
                 >
                   Editar
@@ -53,7 +54,8 @@
               <td>
                 <button
                   type="button"
-                  class="btn btn-danger"
+                  class="botonesC"  style="background:#d9534f
+"
                   v-on:click="borraRegistro(pacTrat._id)"
                 >
                   Eliminar
@@ -64,6 +66,13 @@
         </table>
       </nav>
     </div>
+       <button
+        type="button"
+        class="botones" style="background:grey"
+        v-on:click="volver(paciente.dni)"
+      >
+        Volver
+      </button>
   </header>
 </template>
 

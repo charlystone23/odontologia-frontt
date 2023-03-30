@@ -1,17 +1,23 @@
 <template>
-  <h1>Paciente:{{ paciente.nombre }} {{ paciente.apellido }}</h1>
+  <div class="color-fondo">
+    <br /><br />
+    <h1>Paciente:{{ paciente.nombre }} {{ paciente.apellido }}</h1>
 
-  <button type="button" 
-  class="btn btn-primary"
-   v-on:click="listadoTP(paciente.dni)">
-    Tratamientos del paciente
-  </button>
-  <button type="button" class="btn btn-secondary">Odontograma</button>
-  <button type="button" class="btn btn-success">Agenda</button>
+    <button type="button" class="botonesG" v-on:click="listadoTP(paciente.dni)">
+      Tratamientos del paciente
+    </button>
+    <br />
+    <button type="button" class="botonesG" style="background: #292b2c">
+      Odontograma
+    </button>
 
-  <RouterLink to="/listar-pacientes">
-    <button type="button" class="btn btn-secondary">Volver</button></RouterLink
-  >
+    <br /><br />
+    <RouterLink to="/listar-pacientes">
+      <button type="button" class="botonesG" style="background: grey">
+        Volver
+      </button></RouterLink
+    >
+  </div>
 </template>
 
 <script>
@@ -39,7 +45,7 @@ export default {
         })
         .catch(console.log);
     },
-     listadoTP(id) {
+    listadoTP(id) {
       this.$router.push(`/paciente-tratamiento-listar/${id}`);
     },
   },

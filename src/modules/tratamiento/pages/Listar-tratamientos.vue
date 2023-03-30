@@ -1,18 +1,17 @@
 <template>
-  <header>
+  <header class="color-fondo">
     <div class="wrapper">
-      <h1>TRATAMIENTOS</h1>
-
+      <br /><br />
+      <h1>LISTADO DE TRATAMIENTOS</h1>
+      <br /><br />
       <RouterLink to="/nuevo-tratamiento">
-        <button type="button" class="btn btn-info">Nuevo tratamiento</button>
+        <button type="button" class="botones">Nuevo tratamiento</button>
       </RouterLink>
 
-      <RouterLink to="/home-page">
-        <button type="button" class="btn btn-secondary">volver</button>
-      </RouterLink>
+      <br /><br />
 
       <nav>
-        <table class="table">
+        <table class="table table-dark table-sm">
           <thead>
             <tr>
               <th scope="col">Codigo</th>
@@ -21,6 +20,8 @@
 
               <th scope="col">Precio</th>
               <th scope="col">Duracion</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -37,7 +38,8 @@
               <td>
                 <button
                   type="button"
-                  class="btn btn-warning"
+                  class="botonesC"
+                  style="background: #f0ad4e"
                   v-on:click="esEditar(tratamiento.codigo)"
                 >
                   Editar
@@ -46,8 +48,9 @@
               <td>
                 <button
                   type="button"
-                  class="btn btn-danger"
+                  class="botonesC"
                   v-on:click="borraRegistro(tratamiento.codigo)"
+                  style="background: #d9534f"
                 >
                   Eliminar
                 </button>
@@ -57,13 +60,13 @@
         </table>
       </nav>
 
-
-      
+      <RouterLink to="/home-page">
+        <button type="button" class="botones" style="background: grey">
+          Volver
+        </button>
+      </RouterLink>
     </div>
   </header>
-
-
-  
 </template>
 
 <script>
@@ -101,15 +104,12 @@ export default {
         .then((dataRes) => {
           console.log(dataRes);
         })
-        .catch(console.log)
+        .catch(console.log);
 
-      location.reload()
-                        this.$toast.error('¡Se ha ELIMINADO el tratamiento EXITOSAMENTE!');
-
+      location.reload();
+      this.$toast.error("¡Se ha ELIMINADO el tratamiento EXITOSAMENTE!");
     },
   },
 };
 </script>
 
-<style>
-</style>

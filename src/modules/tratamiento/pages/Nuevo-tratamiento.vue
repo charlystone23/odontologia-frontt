@@ -1,5 +1,7 @@
 <template>
+  <br /><br />
   <h1>Nuevo Tratamiento</h1>
+  <br /><br />
   <div class="formulario" style="margin-left: 500px">
     <form class="col-5" v-on:submit.prevent="agregarRegistro">
       <div class="mb-3">
@@ -12,9 +14,7 @@
           placeholder="Codigo"
           required
         />
-        <small id="helpId" class="form-text text-muted"
-          >Codigo de Tratamiento</small
-        >
+        <small id="helpId" class="minit">Codigo de Tratamiento</small>
       </div>
       <div class="mb-3">
         <input
@@ -26,9 +26,7 @@
           placeholder="Nombre"
           required
         />
-        <small id="helpId" class="form-text text-muted"
-          >Nombre del tratamiento</small
-        >
+        <small id="helpId" class="minit">Nombre del tratamiento</small>
       </div>
       <div class="mb-3">
         <input
@@ -40,9 +38,7 @@
           placeholder="Descripcion"
           required
         />
-        <small id="helpId" class="form-text text-muted"
-          >Descripcion del tratamiento</small
-        >
+        <small id="helpId" class="minit">Descripcion del tratamiento</small>
       </div>
 
       <div class="mb-3">
@@ -55,9 +51,7 @@
           placeholder="Precio"
           required
         />
-        <small id="helpId" class="form-text text-muted"
-          >Precio del tratamiento</small
-        >
+        <small id="helpId" class="minit">Precio del tratamiento</small>
       </div>
       <div class="mb-3">
         <input
@@ -69,15 +63,23 @@
           placeholder="Duracion"
           required
         />
-        <small id="helpId" class="form-text text-muted"
-          >Duracion del tratamiento</small
-        >
+        <small id="helpId" class="minit">Duracion del tratamiento</small>
       </div>
 
       <div>
-        <button type="submit" class="btn btn-primary">Agregar</button>
+        <button
+          type="submit"
+          class="botonesC"
+          style="background: #5cb85c; margin: 10px"
+        >
+          Agregar
+        </button>
         <RouterLink to="/listar-tratamientos">
-          <button type="button" class="btn btn-secondary">
+          <button
+            type="button"
+            class="botonesC"
+            style="background: grey; margin: 10px"
+          >
             cancelar
           </button></RouterLink
         >
@@ -122,8 +124,7 @@ export default {
         .then((response) => console.log("Success", response));
 
       this.$router.push("/listar-tratamientos");
-                  this.$toast.success('¡Se ha CREADO el tratamiento EXITOSAMENTE!');
-
+      this.$toast.success("¡Se ha CREADO el tratamiento EXITOSAMENTE!");
     },
   },
 };

@@ -1,22 +1,22 @@
 <template >
-  <div class="login-layout">
+  <div class="color-fondo">
     <router-view></router-view>
-    <h1>Sistema de Gestion Odontologica</h1>
-    <h2>Bienvenido</h2>
-    <RouterLink to="/login-auth"
-      ><button class="login">Login</button></RouterLink
-    >
-    <button>Registro</button>
+    <br><br>
 
+    <h1 class="text-center fw-bold">Sistema de Gestion Odontologica</h1>
+    <br><br><br>
+    <h2>Bienvenido</h2>
+    <br><br><br><br>
+    <RouterLink to="/login-auth"
+      ><button  type="button" class="botones">INGRESAR</button></RouterLink
+    >
+  
     <div class="rectangulo"></div>
   </div>
 </template>
 
-<style scoped>
-.login-layout {
-  height: 100vh;
-  background: rgb(0, 153, 255);
-}
+<style >
+
 </style>
 
 

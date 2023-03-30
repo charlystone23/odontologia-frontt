@@ -1,8 +1,10 @@
 <template>
+<br><br>
   <h1>Editar Tratamientos</h1>
 
   <div class="formulario" style="margin-left: 500px">
     <form class="col-5" v-on:submit.prevent="actualizarRegistro">
+      <br>
       <div class="mb-3">
         <h4>Codigo: {{ this.$route.params.id }}</h4>
       </div>
@@ -10,14 +12,14 @@
       <div class="mb-3">
         <input
           type="text"
-          class="form-control"
+          class="form-control "
           v-model="tratamiento.nombre"
           id="nombre"
           name="nombre"
           placeholder="Nombre"
           required
         />
-        <small id="helpId" class="form-text text-muted"
+        <small id="helpId" class="minit"
           >Nombre del tratamiento</small
         >
       </div>
@@ -25,14 +27,14 @@
       <div class="mb-3">
         <input
           type="text"
-          class="form-control"
+          class="form-control "
           v-model="tratamiento.descripcion"
           id="descripcion"
           name="descripcion"
           placeholder="Descripcion"
           required
         />
-        <small id="helpId" class="form-text text-muted"
+        <small id="helpId" class="minit"
           >Descripcion del tratamiento</small
         >
       </div>
@@ -40,36 +42,36 @@
       <div class="mb-3">
         <input
           type="number"
-          class="form-control"
+          class="form-control "
           v-model="tratamiento.precio"
           id="precio"
           name="precio"
           placeholder="Precio"
           required
         />
-        <small id="helpId" class="form-text text-muted"
+        <small id="helpId" class="minit"
           >Precio del tratamiento</small
         >
       </div>
       <div class="mb-3">
         <input
           type="text"
-          class="form-control"
+          class="form-control "
           v-model="tratamiento.duracion"
           id="duracion"
           name="duracion"
           placeholder="Duracion"
           required
         />
-        <small id="helpId" class="form-text text-muted"
+        <small id="helpId" class="minit"
           >Duracion del tratamiento</small
         >
       </div>
 
       <div>
-        <button type="submit" class="btn btn-warning">Actualizar</button>
+        <button type="submit" class="botonesC" style="background: #f0ad4e; margin:10px ">Actualizar</button>
         <RouterLink to="/listar-tratamientos">
-          <button type="button" class="btn btn-secondary">
+          <button type="button" class="botonesC"  style="background:grey; margin:10px">
             cancelar
           </button></RouterLink
         >
