@@ -98,7 +98,7 @@ export default {
   },
   methods: {
     consultarPacientes() {
-      fetch("http://localhost:4000/api/pacientes")
+      fetch("https://server-dientito-cs23.onrender.com/api/pacientes")
         .then((respuesta) => respuesta.json())
         .then((datosRespuesta) => {
           console.log(datosRespuesta);
@@ -117,7 +117,7 @@ export default {
     },
 
     borraRegistro(id) {
-      fetch("http://localhost:4000/api/pacientes/" + id, {
+      fetch("https://server-dientito-cs23.onrender.com/api/pacientes/" + id, {
         method: "DELETE",
       })
         .then((res) => res.json())

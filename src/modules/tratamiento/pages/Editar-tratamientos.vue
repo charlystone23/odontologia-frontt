@@ -100,7 +100,7 @@ export default {
     obtenerInfo() {
       console.log(this.$route.params);
 
-      fetch("http://localhost:4000/api/tratamientos/" + this.$route.params.id, {
+      fetch("https://server-dientito-cs23.onrender.com/api/tratamientos/" + this.$route.params.id, {
         method: "GET",
       })
         .then((res) => res.json())
@@ -125,7 +125,7 @@ export default {
       console.log(datos);
       console.log(this.$route.params.id);
       await fetch(
-        "http://localhost:4000/api/tratamientos/" + this.$route.params.id,
+        "https://server-dientito-cs23.onrender.com/api/tratamientos/" + this.$route.params.id,
         {
           method: "PUT",
           body: datos,

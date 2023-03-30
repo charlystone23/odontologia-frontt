@@ -165,7 +165,7 @@ export default {
 
       console.log(datosEnviar);
 
-      await fetch("http://localhost:4000/api/pacientes", {
+      await fetch("https://server-dientito-cs23.onrender.com/api/pacientes", {
         method: "POST",
         body: JSON.stringify(datosEnviar),
         headers: {

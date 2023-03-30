@@ -92,7 +92,7 @@ export default {
     //OBTENER PACIENTE TRATAMIENTO
     consultarTratamientos() {
       fetch(
-        "http://localhost:4000/api/pacientetratamiento/" +
+        "https://server-dientito-cs23.onrender.com/api/pacientetratamiento/" +
           this.$route.params.id,
         {
           method: "GET",
@@ -118,7 +118,7 @@ export default {
 
     //OBTENER EL PACIENTE
     obtenerInfo() {
-      fetch("http://localhost:4000/api/pacientes/" + this.$route.params.id, {
+      fetch("https://server-dientito-cs23.onrender.com/api/pacientes/" + this.$route.params.id, {
         method: "GET",
       })
         .then((res) => res.json())
@@ -136,7 +136,7 @@ export default {
     borraRegistro(codigo) {
       console.log(codigo);
 
-      fetch("http://localhost:4000/api/pacientetratamiento/" + codigo, {
+      fetch("https://server-dientito-cs23.onrender.com/api/pacientetratamiento/" + codigo, {
         method: "DELETE",
       })
         .then((res) => res.json())

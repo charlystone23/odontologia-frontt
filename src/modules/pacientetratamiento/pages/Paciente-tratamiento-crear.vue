@@ -121,7 +121,7 @@ export default {
 
       console.log(datosEnviar);
 
-      await fetch("http://localhost:4000/api/pacientetratamiento", {
+      await fetch("https://server-dientito-cs23.onrender.com/api/pacientetratamiento", {
         method: "POST",
         body: JSON.stringify(datosEnviar),
         headers: {
@@ -140,7 +140,7 @@ export default {
 
     // Obtengo los tratamientos
     consultarTratamientos() {
-      fetch("http://localhost:4000/api/tratamientos")
+      fetch("https://server-dientito-cs23.onrender.com/api/tratamientos")
         .then((respuesta) => respuesta.json())
         .then((datosRespuesta) => {
           console.log(datosRespuesta);
