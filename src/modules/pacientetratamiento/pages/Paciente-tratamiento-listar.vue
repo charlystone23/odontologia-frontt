@@ -105,6 +105,7 @@ export default {
 
   mounted() {
     this.consultarTratamientos();
+    this.obtenerInfo();
   },
 
   methods: {
@@ -131,6 +132,7 @@ export default {
         `/paciente-tratamiento-editar/${id}/${idtratamiento}`
       );
     },
+
     nuevoTP(id) {
       this.$router.push(`/paciente-tratamiento-crear/${id}`);
     },
