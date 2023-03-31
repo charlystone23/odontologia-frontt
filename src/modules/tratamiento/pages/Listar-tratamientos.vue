@@ -65,15 +65,26 @@
           Volver
         </button>
       </RouterLink>
+
+       <borrado-modal
+      :title="'Borrado de Tratamiento de paciente'"
+      :message="'¿Estas seguro que quieres borrar este Tratamiento?'"
+      v-if="showModal"
+      @close-modal="closeModal"
+      @delete-item="confirmDelete(id)"
+      ref="BorradoModal"
+    ></borrado-modal>
     </div>
   </header>
 </template>
 
 <script>
+import BorradoModal from '../../extras/BorradoModal.vue';
 
 export default {
+  
   components: {
-    
+    BorradoModal
   },
 
   data() {
