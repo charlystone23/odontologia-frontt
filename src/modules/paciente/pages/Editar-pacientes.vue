@@ -8,18 +8,7 @@
         <h4>DNI: {{ this.$route.params.id }}</h4>
       </div>
 
-      <div class="mb-3">
-        <input
-          type="number"
-          class="form-control"
-          v-model="paciente.dni"
-          id="dni"
-          name="dni"
-          placeholder="Dni"
-          required
-        />
-        <small id="helpId" class="minit">Dni del paciente</small>
-      </div>
+      
       <div class="mb-3">
         <input
           type="text"

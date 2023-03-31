@@ -10,7 +10,6 @@
 
       <br /><br />
 
-
       <nav>
         <table class="table table-dark table-sm">
           <thead>
@@ -50,7 +49,7 @@
                 <button
                   type="button"
                   class="botonesC"
-                  v-on:click="borraRegistro(tratamiento.codigo)"
+                  v-on:click="deleteItem(tratamiento.codigo)"
                   style="background: #d9534f"
                 >
                   Eliminar
@@ -61,26 +60,26 @@
         </table>
       </nav>
 
-
-
       <RouterLink to="/home-page">
         <button type="button" class="botones" style="background: grey">
           Volver
         </button>
       </RouterLink>
     </div>
-    
   </header>
-
-
-  
 </template>
 
 <script>
+
 export default {
+  components: {
+    
+  },
+
   data() {
     return {
       tratamientos: [],
+      showModal: false,
     };
   },
   mounted() {
@@ -102,19 +101,30 @@ export default {
     esEditar(id) {
       this.$router.push(`/editar-tratamientos/${id}`);
     },
+    deleteItem(id){
+      this.showModal=true;
+      this.id=id
+    },
+        closeModal() {
+      this.showModal = false;
+    },
 
-    borraRegistro(id) {
-      fetch("https://server-dientito-cs23.onrender.com/api/tratamientos/" + id, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((dataRes) => {
-          console.log(dataRes);
-        })
-        .catch(console.log);
-
-      location.reload();
-      this.$toast.error("¡Se ha ELIMINADO el tratamiento EXITOSAMENTE!");
+    async confirmDelete(id) {
+      try{
+       const res = await fetch(
+        `https://server-dientito-cs23.onrender.com/api/tratamientos/${id}` ,
+        {
+          method: "DELETE",
+        }
+      )
+      if(res.ok){
+        this.$toast.error('¡Se ha ELIMINADO el tratamiento EXITOSAMENTE!');
+          this.consultarTratamientos();
+      }
+      }catch (err) {
+        console.log('ERROR: ', err);
+      }
+      this.showModal = false;
     },
   },
 };
